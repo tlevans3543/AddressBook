@@ -35,10 +35,7 @@ public class AddressBookTest {
         Person[] personsTest;
         personsBook.add(testPerson);
         personsTest = personsBook.getPersons();
-        if (personsTest.length > 0){
-            personsFound = true;
-        }
-        Assertions.assertTrue(personsFound);
+        Assertions.assertEquals(1, personsTest.length);
     }
 
     @Test
@@ -63,15 +60,11 @@ public class AddressBookTest {
     @Test
     public void remove() {
         Person[] personArray;
-        boolean personRemoved = false;
         AddressBook removeTestBook = new AddressBook();
         removeTestBook.add(testPerson);
         removeTestBook.remove(0);
         personArray = removeTestBook.getPersons();
-        if(personArray.length == 0){
-            personRemoved = true;
-        }
-        Assertions.assertTrue(personRemoved);
+        Assertions.assertEquals(0, personArray.length);
     }
 
     @Test
@@ -84,14 +77,11 @@ public class AddressBookTest {
     @Test
     public void clear() {
         AddressBook clearTestBook = new AddressBook();
-        boolean bookCleared = false;
         clearTestBook.add(testPerson);
         clearTestBook.add(testPerson);
         clearTestBook.clear();
-        if (clearTestBook.getRowCount() == 0){
-            bookCleared = true;
-        }
-        Assertions.assertEquals(true, bookCleared);
+        int emptyBook = clearTestBook.getRowCount();
+        Assertions.assertEquals(0, emptyBook);
     }
 
     @Test
