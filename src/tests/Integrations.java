@@ -41,6 +41,11 @@ public class Integrations {
     // Person Integration Tests
 
     @Test
+    public void buildPersonIntegration(){
+        Person build = Mockito.mock(Person.class);
+    }
+
+    @Test
     public void getFieldIntegrationTest() {
         Boolean thrown = false;
         String result = "";
@@ -52,12 +57,12 @@ public class Integrations {
         when(personMock.getField(4)).thenReturn("Florida");
         when(personMock.getField(5)).thenReturn("33965");
         when(personMock.getField(6)).thenReturn("(239) 590-1000");
-        when(personMock.getField(7)).thenThrow(IndexOutOfBoundsException.class);
+        when(personMock.getField(7)).thenThrow(IllegalArgumentException.class);
 
         for(int i=0;i<8;i++){
             try {
-                result = personMock.getField(i); // int 1 is the case for returning first name.
-            } catch (IndexOutOfBoundsException e){
+                result = personMock.getField(i);
+            } catch (IllegalArgumentException e){
                 thrown = true;
             }
             if(i==0){
