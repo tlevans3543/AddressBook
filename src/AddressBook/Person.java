@@ -35,8 +35,21 @@ public class Person {
         this.address = address;
         this.city = city;
         this.state = state;
-        this.zip = zip;
-        this.phone = phone;
+
+        // Will throw Exception if entered zip contains non-numbers
+        // Person object will not be created
+        if (zip.matches("^[0-9]*$")){
+            this.zip = zip;
+        }
+        else
+            throw new IllegalArgumentException("Zip can only contain numbers");
+
+        // Will throw Exception if entered phone contains non-numbers
+        // Person object will not be created
+        if (phone.matches("^[0-9]*$"))
+            this.phone = phone;
+        else
+            throw new IllegalArgumentException("Phone can only contain numbers");
     }
 
 

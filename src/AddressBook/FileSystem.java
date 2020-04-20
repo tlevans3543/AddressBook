@@ -29,7 +29,6 @@ public class FileSystem {
                     rs.getString("phone"));
             addressBook.add(p);
         }
-      
         connection.close();
     }
 
